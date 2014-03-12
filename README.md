@@ -1,8 +1,16 @@
-Rainbow 0.0.1
+Rainbow 0.0.2
 =============
 
+Version
+
+    0.0.2 -adapted code for dart2js
+	  -deployed to [GAppsEngine](https://rainbow-dart.appspot.com)
   Dart Color Theme Editor
-    	
+
+    Use [Rainbow](https://rainbow-dart.appspot.com) online
+	or
+    follow instructions for local version
+
 HOW TO RUN
 ----------
 

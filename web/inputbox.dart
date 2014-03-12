@@ -13,6 +13,8 @@ class InputBox extends PolymerElement {
   @published bool active = false;
   @published bool hide = true;
       
+  @published bool showOptions = true;//<b>
+  
   @published bool bold = false;//<b>
   @published bool italic = false;//<i>
   @published bool underline = false;//<u>
@@ -37,7 +39,7 @@ class InputBox extends PolymerElement {
   
   void setColor(){
     List l = querySelectorAll(".$name");
-    if(name == "occurrenceIndication" || name == "currentLine" || name.contains("background") || name.contains("Background")){
+    if(name == "occurrenceIndication" || name == "currentLine" || name.toLowerCase().contains("background")){
       l.forEach((HtmlElement e){
         e.style.backgroundColor = color;
       });

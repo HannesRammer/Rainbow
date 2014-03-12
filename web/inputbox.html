@@ -20,7 +20,7 @@
           {{name}}
           <input id="color" type="color" value="{{color}}" on-change="{{setColor}}">
           
-          <template if="{{!name.contains('background') && !name.contains('Background')}}">
+          <template if="{{showOptions}}">
             <template if="{{!bold}}">
               <button id="bold" on-click="{{toggleBold}}">B</button>  
             </template>
@@ -53,7 +53,7 @@
           {{name}}
           <input id="color" type="color" value="{{color}}" on-change="{{setColor}}">
           
-          <template if="{{!name.contains('background') && !name.contains('Background')}}">
+          <template if="{{showOptions}}">
             <template if="{{!bold}}">
               <button id="bold" on-click="{{toggleBold}}">B</button>  
             </template>
@@ -88,7 +88,7 @@
         {{name}}
         <input id="color" type="color" value="{{color}}">
         
-        <template if="{{!name.contains('background') && !name.contains('Background')}}">
+        <template if="{{showOptions}}">
             <button id="bold" on-click="{{toggleBold}}">B</button>  
             <button id="italic" on-click="{{toggleItalic}}">I</button>  
             <button id="underline" on-click="{{toggleUnderline}}">U</button>  

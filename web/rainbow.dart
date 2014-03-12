@@ -2,14 +2,16 @@ import 'package:polymer/polymer.dart';
 import 'dart:html';
 import 'dart:async';
 import 'package:xml/xml.dart';
-
+import "inputbox.dart";
 DivElement container = querySelector("#container");
 ButtonElement fileReader = querySelector('#fileReader');
 InputElement fileSelector = querySelector('#fileSelector');
 Element inputDiv = querySelector('#input');
 HtmlElement dartDiv = querySelector('#dart');
 HtmlElement htmlDiv = querySelector('#html');
-
+TextInputElement authorDiv = querySelector("#author"); 
+TextInputElement themeNameDiv = querySelector("#themeName");
+  
 String defaultXmlString = 
 '''<?xml version="1.0" encoding="utf-8"?>
 <colorTheme id="24834" name="RAINBOW-HR" modified="2014-03-03 16:12:33" author="Hannes Rammer">
@@ -160,8 +162,9 @@ loadInputBoxesFromXmlString(String xmlString){
   container.children.clear();
   XmlElement xml = XML.parse(xmlString);
   XmlElement theme = xml.query("colorTheme")[0];
-  querySelector("#author").value = theme.attributes["author"];
-  querySelector("#themeName").value = theme.attributes["name"];
+  authorDiv.value = theme.attributes["author"];
+  
+  themeNameDiv.value = theme.attributes["name"];
   theme.children.forEach((XmlElement e){
     var inputBox = new Element.tag("input-box");
     inputBox.id = e.name;
@@ -171,6 +174,9 @@ loadInputBoxesFromXmlString(String xmlString){
     inputBox.italic = e.attributes["italic"] == 'true';
     inputBox.underline = e.attributes["underline"] == 'true';
     inputBox.strikethrough = e.attributes["strikethrough"] == 'true';
+    if(e.name.toLowerCase().contains("background")){
+      inputBox.showOptions=false;
+    }
     inputBox.onMouseOver.listen((_) => setCodeHighlight(e.name));
     inputBox.onMouseOut.listen((_) => removeCodeHighlight(e.name));
     if(querySelector(".${e.name}") != null){
@@ -202,7 +208,7 @@ void removeCodeHighlight(String attrName){
 
 void setColor(String attrName,String color){
   List l = querySelectorAll(".$attrName");
-  if(attrName == "occurrenceIndication" || attrName == "currentLine" || attrName.contains("background") || attrName.contains("Background")){
+  if(attrName == "occurrenceIndication" || attrName == "currentLine" || attrName.toLowerCase().contains("background")){
     l.forEach((HtmlElement e){
       e.style.backgroundColor = color;
     });
@@ -214,7 +220,7 @@ void setColor(String attrName,String color){
 }
 
 void appendAncorLink(String attrName){
-  if(!attrName.contains("background") && attrName != "foreground"){
+  if(attrName != "background" && attrName != "foreground"){
     List l = querySelectorAll(".$attrName");
     l.forEach((HtmlElement e){
       e.onClick.listen((e) => window.location.assign("#$attrName"));
@@ -245,6 +251,7 @@ void activeElements(List<Element> list){
 
 void blink(String id){
   addHighlight(id);
+  
   var future = new Future.delayed(const Duration(milliseconds: 150));
   future.then((_){
     removeHighlight(id);
@@ -268,7 +275,7 @@ void blink(String id){
 }
 
 void addHighlight(String id){
-  var element = querySelector("#${id}");
+  var element = querySelector("#${id}") as PolymerElement;
   if (element != null){
     element.highlight = true;
   }
@@ -303,7 +310,7 @@ void setClass(String attrName, item){
 
 void toggleInactive(){
   List l = querySelectorAll("input-box");
-  l.forEach((Element e){
+  l.forEach((InputBox e){
     if(!e.active){
       e.hide = !e.hide;  
     }
@@ -341,8 +348,8 @@ void prepareDownloadLink(){
 void preloadXmlString(){
   lines.clear();
   lines.add('<?xml version="1.0" encoding="utf-8"?>\n');
-  lines.add('<colorTheme name="${querySelector("#themeName").value}" author="${querySelector("#author").value}">\n');
-  querySelectorAll("input-box").forEach((Element element){
+  lines.add('<colorTheme name="${themeNameDiv.value}" author="${authorDiv.value}">\n');
+  querySelectorAll("input-box").forEach((InputBox element){
     
     var bool = "";
     var italic = "";
@@ -370,8 +377,7 @@ void preloadXmlString(){
 updateExportLink(){
   AnchorElement downloadLink = querySelector('#fileSaver') ;
   // Plain text type, 'native' line endings
-  String themeName = querySelector("#themeName").value;
-  String fileName = themeName.replaceAll(" ","_");
+  String fileName = themeNameDiv.value.replaceAll(" ","_");
   var blob = new Blob(lines, 'text/plain', 'native');
   downloadLink.download = "$fileName.xml";
   downloadLink.href = Url.createObjectUrlFromBlob(blob).toString();
@@ -386,24 +392,10 @@ loopAdaptWindowSize(){
 }
 
 adaptWindowSize(){
-  
   if(inputDiv.style.height != "${window.innerHeight * 0.9}px"){
     inputDiv.style.height = "${window.innerHeight * 0.9}px";
     print(inputDiv.style.height);
   }
-  
-  inputDiv.onChange.listen((e) {
-    FileList files = inputDiv.files;
-    File file = files.item(0);
-    
-    FileReader reader = new FileReader();
-    reader.onLoad.listen((fileEvent) {
-      print("file read");
-      
-    });
-    reader.onError.listen((evt) => print("error ${reader.error.code}"));
-    reader.readAsText(file);
-  });
 }
 
 
