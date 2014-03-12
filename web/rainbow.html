@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rainbow</title>
+    <link rel="stylesheet" href="rainbow.css">
+    <style>
+        body {
+      background-color: #F8F8F8;
+      }
+    </style>
+    <!-- import the click-counter -->
+    <link rel="import" href="inputbox.html">
+    <script type="application/dart">export 'rainbow.dart';</script>
+    <script src="packages/browser/dart.js"></script>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td style="width:200px;max-width:200px;min-width:200px;border:1px solid #cccccc;" colspan=3>
+          <b>
+            <span style="color:#ff0000;">R</span>
+            <span style="color:#00ff00;">a</span>
+            <span style="color:#0000ff;">i</span>
+            <span style="color:#ffff00;">n</span>
+            <span style="color:#ff00ff;">b</span>
+            <span style="color:#00ffff;">o</span>
+            <span style="color:#f5a200;">w</span>
+          </b>
+          <button id="toggleInactive">toggle unused options</button>
+          Import: <input type="file" id="fileSelector"/>
+          <button id="fileReader" style="display:none;">read File</button>
+          author: <input type="text" id="author" value="your Name"/>
+          themeName: <input type="text" id="themeName" value="new Dart Style"/>
+          <a id="fileSaver"></a>
+          <button id="saveButton">export</button>
+        </td>
+      </tr>
+      <tr style="vertical-align:top;">
+        <td>
+          <div id="input">
+            <div id="container">
+            </div>
+          </div>
+        </td>
+        <td>
+          <div id="html" class="background foreground" style="position:relative;padding:5px;width:370px;">
+            <pre>
+<span class="method _declBoder">&lt;</span><span class="localVariableDeclaration _doctypeExternalId">!DOCTYPE</span> <span class="method _doctypeName">html</span><span class="method _declBoder">&gt;</span>
+  <span class="localVariable _tagborder" >&lt;</span><span class="localVariableDeclaration _tag" >html</span><span class="localVariable _tagborder" >&gt;</span>
+  <span class="localVariable _tagborder" >&lt;</span><span class="localVariableDeclaration _tag" >head</span><span class="localVariable _tagborder" >&gt;</span>
+    <span class="localVariable _tagborder" >&lt;</span><span class="localVariableDeclaration _tag" >link</span> <span class="field _attribute">rel</span><span class="equals">=</span><span class="string _attributevalue">"stylesheet"</span> <span class="field _attribute">type</span><span class="equals">=</span><span class="string _attributevalue">"text/css"</span> <span class="localVariable _tagborder" >/&gt;</span>
+    <span class="localVariable _tagborder" >&lt;</span><span class="localVariableDeclaration _tag" >style</span><span class="localVariable _tagborder" >&gt;</span>
+      <span class="method" >body</span> {
+        <span class="field _attribute">background-color</span>: <span class="string _attributevalue">#FFFFFF</span>;
+      }
+    <span class="localVariable _tagborder" >&lt;/</span><span class="localVariableDeclaration _tag" >style</span><span class="localVariable _tagborder" >&gt;</span>
+  <span class="localVariable _tagborder" >&lt;/</span><span class="localVariableDeclaration _tag" >head</span><span class="localVariable _tagborder" >&gt;</span>
+  <span class="localVariable _tagborder">&lt;</span><span class="localVariableDeclaration _tag" >body</span><span class="localVariable _tagborder" >&gt;</span>
+    <span class="multiLineComment _commentBorder">&lt;!--</span><span class="multiLineComment _comment"> This is a comment </span><span class="multiLineComment _commentBorder">--&gt;</span>
+    <span class="localVariable _tagborder" >&lt;</span><span class="localVariableDeclaration _tag" >p</span><span class="localVariable _tagborder" >&gt;</span>three<span class="keyword _entity">&amp;amp;</span><span class="keyword _entity">&amp;amp;</span><span class="keyword entity">&amp;amp;</span>spaces<span class="localVariable _tagborder" >&lt;/</span><span class="localVariableDeclaration tag" >p</span><span class="localVariable _tagborder" >&gt;</span>
+  <span class="localVariable _tagborder" >&lt;/</span><span class="localVariableDeclaration _tag" >body</span><span class="localVariable _tagborder" >&gt;</span>
+<span class="localVariable _tagborder" >&lt;/</span><span class="localVariableDeclaration _tag" >html</span><span class="localVariable _tagborder" >&gt;</span></pre>
+          </div>
+        </td>
+        <td>
+          <div id="dart" class="background foreground" style="relative;padding:5px;width:536px;">
+            <pre><span class="multiLineComment">/* 
+* multi line comment
+*/</span>
+<span class="keyword">void</span> <span class="methodDeclaration">main</span>() {
+  <span class="function">initPolymer</span>().<span class="method">run</span>(() {
+    <span class="class">XmlElement</span> <span class="localVariableDeclaration">xml</span> = <span class="class">XML</span>.<span class="staticMethod">parse</span>(defaultXmlString);
+    <span class="class">XmlCollection</span>&lt;<span class="class">XmlElement</span>&gt; <span class="localVariableDeclaration">theme</span> = <span class="localVariable">xml</span>.<span class="method">query</span>(<span class="string">"colorTheme"</span>);
+    <span class="localVariable">theme</span>[<span class="number">0</span>].<span class="field">children</span>.<span class="method">forEach</span>((<span class="class">XmlElement</span> <span class="parameterVariable">e</span>){
+      <span class="keyword">var</span> <span class="localVariableDeclaration">inputBox</span> = <span class="keyword">new</span> <span class="class">Element</span>.<span class="constructor">tag</span>(<span class="string">"input-box"</span>);
+      <span class="localVariable">inputBox</span>.<span class="field _setter">id</span> = <span class="parameterVariable">e</span>.<span class="field occurrenceIndication">name</span>;
+      <span class="localVariable">inputBox</span>.name = <span class="parameterVariable">e</span>.<span class="field occurrenceIndication">name</span>;
+<span class="currentLine">      <span class="class">String</span><span class="localVariableDeclaration"> s </span>=</span><span class="currentLine"><span class="multiLineString"> '''multi line</span>                                     </span>
+<span class="multiLineString">      string'''</span>;
+      <span class="selectionForeground selectionBackground">selection;</span>
+      container.<span class="method">append</span>(<span class="localVariable">inputBox</span>);
+    });
+    <span class="function">appendTitle</span>(<span class="function">querySelector</span>(<span class="string">"#output"</span>).<span class="method">querySelectorAll</span>(<span class="string">"span"</span>));
+  });
+}
+<span class="singleLineComment">// single line comment</span>
+<span class="class">@CustomTag</span>(<span class="string">'input-box'</span>)
+<span class="keyword">class</span> <span class="class">InputBox</span> <span class="keyword">extends</span> <span class="class">PolymerElement</span> {
+  @published <span class="class">String</span> <span class="field">name</span> = <span class="string">"default"</span>;
+  @published <span class="class">String</span> <span class="field">color</span> = <span class="string">"#ff0000"</span>;
+  <span class="class">InputBox</span>.<span class="constructor">created</span>() : <span class="keyword">super</span>.<span class="constructor">created</span>() {}
+  <span class="keyword">static</span> <span class="keyword">void</span> <span class="staticMethodDeclaration">one</span>(<span class="class">String</span> <span class="parameterVariable">className</span>,empty){
+    <span class="staticMethod">one</span>(<span class="parameterVariable">className</span>,empty);
+  }
+  <span class="keyword">void</span> <span class="methodDeclaration">setBackground</span>(){
+    <span class="class">List</span> <span class="localVariableDeclaration">l</span> = <span class="function">querySelectorAll</span>(<span class="string">".</span>$<span class="field">name</span><span class="string">"</span>);
+    <span class="keyword">if</span>(<span class="field">name</span> == <span class="string">"currentLine"</span>){
+      <span class="localVariable">l</span>.<span class="method">forEach</span>((<span class="class">HtmlElement</span> <span class="parameterVariable">e</span>){
+        <span class="parameterVariable">e</span>.<span class="field _getter">style</span>.<span class="field _setter">backgroundColor</span> = <span class="field">color</span>;
+      });
+    }
+  }
+}</pre>
+          </div>
+        </td>
+      </tr>
+    </table>
+    
+    
+  </body>
+</html>

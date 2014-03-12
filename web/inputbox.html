@@ -1,0 +1,103 @@
+<polymer-element name="input-box">
+  <template>
+    <style>
+    .bold{
+      font-weight: bold;
+    }
+    .italic{
+      font-style: italic;
+    }
+    .underline{
+      text-decoration: underline;
+    }
+    .strikethrough{
+      text-decoration: line-through;
+    }
+    </style>
+    <template if="{{active}}">
+      <template if="{{highlight}}">
+        <div style="text-align:right;width:370px;background: #ff0000; ">
+          {{name}}
+          <input id="color" type="color" value="{{color}}" on-change="{{setColor}}">
+          
+          <template if="{{!name.contains('background') && !name.contains('Background')}}">
+            <template if="{{!bold}}">
+              <button id="bold" on-click="{{toggleBold}}">B</button>  
+            </template>
+            <template if="{{bold}}">
+              <button id="bold" on-click="{{toggleBold}}" class="bold">B</button>
+            </template>
+            <template if="{{!italic}}">
+              <button id="italic" on-click="{{toggleItalic}}">I</button>  
+            </template>
+            <template if="{{italic}}">
+              <button id="italic" on-click="{{toggleItalic}}" class="italic">I</button>
+            </template>
+            <template if="{{!underline}}">
+              <button id="underline" on-click="{{toggleUnderline}}">U</button>  
+            </template>
+            <template if="{{underline}}">
+              <button id="underline" on-click="{{toggleUnderline}}" class="underline">U</button>
+            </template>
+            <template if="{{!strikethrough}}">
+              <button id="strikethrough" on-click="{{toggleStrikethrough}}">S</button>  
+            </template>
+            <template if="{{strikethrough}}">
+              <button id="strikethrough" on-click="{{toggleStrikethrough}}" class="strikethrough">S</button>
+            </template>
+          </template>
+        </div>
+      </template>
+      <template if="{{!highlight}}">
+        <div style="text-align:right;width:370px;">
+          {{name}}
+          <input id="color" type="color" value="{{color}}" on-change="{{setColor}}">
+          
+          <template if="{{!name.contains('background') && !name.contains('Background')}}">
+            <template if="{{!bold}}">
+              <button id="bold" on-click="{{toggleBold}}">B</button>  
+            </template>
+            <template if="{{bold}}">
+              <button id="bold" on-click="{{toggleBold}}" class="bold">B</button>
+            </template>
+            <template if="{{!italic}}">
+              <button id="italic" on-click="{{toggleItalic}}">I</button>  
+            </template>
+            <template if="{{italic}}">
+              <button id="italic" on-click="{{toggleItalic}}" class="italic">I</button>
+            </template>
+            <template if="{{!underline}}">
+              <button id="underline" on-click="{{toggleUnderline}}">U</button>  
+            </template>
+            <template if="{{underline}}">
+              <button id="underline" on-click="{{toggleUnderline}}" class="underline">U</button>
+            </template>
+            <template if="{{!strikethrough}}">
+              <button id="strikethrough" on-click="{{toggleStrikethrough}}">S</button>  
+            </template>
+            <template if="{{strikethrough}}">
+              <button id="strikethrough" on-click="{{toggleStrikethrough}}" class="strikethrough">S</button>
+            </template>
+          </template>
+        </div>
+      </template>
+    </template>
+    
+    <template if="{{!active && !hide}}">
+      <div style="text-align:right;width:370px;opacity:0.5;">
+        {{name}}
+        <input id="color" type="color" value="{{color}}">
+        
+        <template if="{{!name.contains('background') && !name.contains('Background')}}">
+            <button id="bold" on-click="{{toggleBold}}">B</button>  
+            <button id="italic" on-click="{{toggleItalic}}">I</button>  
+            <button id="underline" on-click="{{toggleUnderline}}">U</button>  
+            <button id="strikethrough" on-click="{{toggleStrikethrough}}">S</button>  
+        </template>
+      </div>
+    </template>
+    
+  </template>
+  <script type="application/dart" src="inputbox.dart"></script>
+</polymer-element>
+

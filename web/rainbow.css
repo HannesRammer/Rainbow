@@ -1,0 +1,47 @@
+body {
+  background-color: #F8F8F8;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.2em;
+}
+
+h1, p {
+  color: #333;
+}
+
+#sample_container_id {
+  width: 100%;
+  height: 400px;
+  position: relative;
+  border: 1px solid #ccc;
+  background-color: #fff;
+}
+
+#input{
+  float:left;
+}
+#output{
+  float:left;
+}
+
+.bold{
+      font-weight: bold;
+    }
+.italic{
+  font-style: italic;
+}
+.underline{
+  text-decoration: underline;
+}
+.strikethrough{
+  text-decoration: line-through;
+}
+
+.highlight{
+  background-color:#ff0000;
+}
+
+pre{
+  margin: 0;
+}

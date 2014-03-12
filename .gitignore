@@ -1,0 +1,11 @@
+
+#INTELJ
+.idea/
+rainbow.iml
+
+#Rainbow
+packages/
+pubspec.lock
+.settings/
+
+
