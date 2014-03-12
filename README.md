@@ -6,10 +6,10 @@ Rainbow 0.0.1
 HOW TO RUN
 ----------
 
-   1.Download and extract the latest version 
-   2.Open its root folder in Dart Editor
-   3.pub get on pubspec.yaml
-   4.run rainbow.html via Dart Editor 
+   1. Download and extract the latest version 
+   2. Open its root folder in Dart Editor
+   3. pub get on pubspec.yaml
+   4. run rainbow.html via Dart Editor 
 
 *******************************************************************************************
 HOW TO USE
@@ -41,8 +41,6 @@ HOW TO USE
     if you click on an element inside the code, 
     it highlights the according attribute options
 
-    and vide versa 
-    
     while hovering over the attribute options,
     all connected code elements will ba surrounded by a red box 
 
@@ -59,9 +57,11 @@ HOW TO USE
    ------------------------------------
    
     Some keywords like setter and getter are not used by Dart Editor,
-    even though these types do exist, I dont line the linking between html tags and dart variables
+    even though these types do exist.
+    
+    I dont like the linking between html tags and dart variables
    
-    So if anyone knows who to talk to about that. let me please know
+    if anyone knows who to talk to about that, let me please know. 
     
 
 *******************************************************************************************
