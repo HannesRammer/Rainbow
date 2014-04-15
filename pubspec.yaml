@@ -1,14 +1,14 @@
 name: rainbow
-version: 0.0.2
+version: 0.0.3
 author: Hannes Rammer <Hannes.Rammer@gmail.com>
 description: A Dart Color Theme Editor
 homepage: https://github.com/HannesRammer/Rainbow
 environment:
   sdk: '>=0.8.10+6 <2.0.0'
 dependencies:
-  polymer: '0.9.5'
-  xml: '1.0.0'
+  polymer: '>=0.9.5 <0.10.0'
+  xml: '>=1.0.0 <2.0.0'
 transformers:
 - polymer:
-    entry_points: 
+    entry_points:
     - web/rainbow.html

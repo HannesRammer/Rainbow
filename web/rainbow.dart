@@ -174,7 +174,7 @@ loadInputBoxesFromXmlString(String xmlString){
     inputBox.italic = e.attributes["italic"] == 'true';
     inputBox.underline = e.attributes["underline"] == 'true';
     inputBox.strikethrough = e.attributes["strikethrough"] == 'true';
-    if(e.name.toLowerCase().contains("background")){
+    if(e.name.toLowerCase().contains("background") || e.name == ("foreground")){
       inputBox.showOptions=false;
     }
     inputBox.onMouseOver.listen((_) => setCodeHighlight(e.name));
@@ -202,7 +202,7 @@ void setCodeHighlight(String attrName){
 void removeCodeHighlight(String attrName){
   List l = querySelectorAll(".$attrName");
   l.forEach((HtmlElement e){
-    e.style.border = "none";
+    e.style.border = "";
   });
 }
 
