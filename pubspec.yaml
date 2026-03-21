@@ -4,10 +4,12 @@ author: Hannes Rammer <Hannes.Rammer@gmail.com>
 description: A Dart Color Theme Editor
 homepage: https://github.com/HannesRammer/Rainbow
 environment:
-  sdk: '>=0.8.10+6 <2.0.0'
+  sdk: '>=1.0.0 <2.0.0'
 dependencies:
-  polymer: '>=0.9.5 <0.10.0'
-  xml: '>=1.0.0 <2.0.0'
+  browser: '>=0.10.0 <0.11.0'
+  paper_elements: '>=0.7.0 <0.8.0'
+  polymer: '>=0.16.0 <0.17.0'
+  xml: "^2.4.0"
 transformers:
 - polymer:
     entry_points:

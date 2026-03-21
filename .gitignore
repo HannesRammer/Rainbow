@@ -7,7 +7,11 @@ rainbow.iml
 packages/
 pubspec.lock
 .settings/
-.gitignore
-.gitattributes
+*.gitignore
+*.gitattributes
 
 
+*.packages
+.pub
+.idea
+build/

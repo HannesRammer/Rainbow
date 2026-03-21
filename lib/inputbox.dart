@@ -1,5 +1,9 @@
-import 'package:polymer/polymer.dart';
+// Copyright (c) 2015, <Hannes Rammer>. All rights reserved. Use of this source code
+// is governed by a BSD-style license that can be found in the LICENSE file.
+
 import 'dart:html';
+
+import 'package:polymer/polymer.dart';
 
 /**
  * A Polymer click counter element.
